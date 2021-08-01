@@ -10,5 +10,17 @@ public class IndexController {
 		return "index.jsp";
 		
 	}
+	@RequestMapping("/login")
+	public String login() 
+	{
+		return "login.jsp";
+	}
+	@RequestMapping("/adminlogin")
+	public String Adminlogin() 
+	{
+		return "Adminlogin.jsp";
+	}
+	
+	
 
 }

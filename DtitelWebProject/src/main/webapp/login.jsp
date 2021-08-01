@@ -1,43 +1,22 @@
-<%@ page import = "java.sql.*" %>
- <%
- String username = request.getParameter("username");
- String password = request.getParameter("password");
- try{
-	 Class.forName("oracle.jdbc.OracleDriver");		
-	 Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE", "SATNAM", "test");
-	 String sql = "select * from adminlogin where email = '"+username+"' and password = '"+password+"'";
-     PreparedStatement ps = conn.prepareStatement(sql);
-     ResultSet rs= ps.executeQuery();
-     if(rs.next()){
-    	 System.out.println("login sucess");
-    	 
-     }
-     else{
-    	 System.out.println("login invalid");
-    	 
-    	 
-     }
- }
- catch(Exception e){
-	 
- }
- %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <title>Login Form DigiTel</title>
 <style>
 body{
+
 margin :0;
 padding: 0;
-background: url(/home/satnam/git/DigiTelProject/task/src/main/webapp/WEB-INF/avatar.jpeg);
+background: url(back.jpg);
 background-position: center;
 font-family:sans-serif;
 
 }
 .loginbox{
-width: 320px;
-height: 420px;
+width: 500px;
+height: 500px;
 background : #000;
 color: #fff;
 top: 50%;
@@ -55,6 +34,12 @@ position: absolute;
 top: -50px;
 left: calc(50%, -50px);
 
+}
+h2{
+text-align: center;
+color: #fb2525;
+font-size: 90px;
+margin-bottom: 5%;
 }
 h1{
 margin: 0;
@@ -105,21 +90,53 @@ color: darkgrey;
 .loginbox a:hover{
 color: ffc107;
 }
+
 </style>
+<script type="text/javascript">
+ function validate(){
+	 var uname = document.myForm.username.value;
+	 var pass = document.myForm.password.value;
+	 var regexmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+	 var regextele = /^\d{10}$/;
+	 
+	 if(uname==""){
+		 alert("please enter username");
+		 document.myForm.username.focus();
+		 return false;
+		 }
+	 if(!(uname.match(regexmail) || uname.match(regextele)))
+	 {
+	 alert("Please enter correct Email / Telephone Number");
+	 document.myForm.username.focus();
+	 return false;
+	 
+	 }
+	 
+	 if(pass==""){
+		 alert("please enter password");
+		 document.myForm.password.focus();
+		 return false;
+		 }
+	 
+	 
+ }
+</script>
 </head>
 <body>
+<<h2>Welcome to  DigiTel!</h2>
+
 <div class="loginbox">
-<img src = "/home/satnam/git/DigiTelProject/task/src/main/webapp/avatarlogin.png" class="avatar">
-<h1>User Login</h1>
-<form action="">
-<p>Username</p>
-<input type="text" name="username" placeholder="Enter a username" id ="username">
+
+<h1 style="font-size: 30px" >Login Here</h1>
+<form name ="myForm" action="login" method ="post" onsubmit="return validate()">
+<p>Email/Telephone Number</p>
+<input type="text" name="username" placeholder="Enter a username">
 <p>Password</p>
-<input type="password" name="password" placeholder="Enter Password" id="password">
+<input type="password" name="password"  placeholder="Enter Password">
 <input type="submit" name="" value="Login">
-<a href="#">Forgot Password?"></a><br>
-<a href="./adminlogin.jsp">Admin Login?</a>
+
 </form>
 </div>
 </body>
 </html>
+

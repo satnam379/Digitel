@@ -1,27 +1,6 @@
-<%@ page import = "java.sql.*" %>
- <%
- String username = request.getParameter("username");
- String password = request.getParameter("password");
- try{
-	 Class.forName("oracle.jdbc.OracleDriver");		
-	 Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/XE", "SATNAM", "test");
-	 String sql = "select * from adminlogin where email = '"+username+"' and password = '"+password+"'";
-     PreparedStatement ps = conn.prepareStatement(sql);
-     ResultSet rs= ps.executeQuery();
-     if(rs.next()){
-    	 System.out.println("login sucess");
-    	 
-     }
-     else{
-    	 System.out.println("login invalid");
-    	 
-    	 
-     }
- }
- catch(Exception e){
-	 
- }
- %>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+   
 <!DOCTYPE html>
 <html>
 <head>
@@ -110,15 +89,15 @@ color: ffc107;
 <body>
 <div class="loginbox">
 <img src = "/home/satnam/git/DigiTelProject/task/src/main/webapp/avatarlogin.png" class="avatar">
-<h1>User Login</h1>
+<h1>Login Here</h1>
 <form action="">
 <p>Username</p>
-<input type="text" name="username" placeholder="Enter a username" id ="username">
+<input type="text" name="" placeholder="Enter a username">
 <p>Password</p>
-<input type="password" name="password" placeholder="Enter Password" id="password">
+<input type="password" name="" placeholder="Enter Password">
 <input type="submit" name="" value="Login">
 <a href="#">Forgot Password?"></a><br>
-<a href="./adminlogin.jsp">Admin Login?</a>
+<a href="#">Don't have an account?</a>
 </form>
 </div>
 </body>
