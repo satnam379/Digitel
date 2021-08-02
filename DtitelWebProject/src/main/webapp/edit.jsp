@@ -125,7 +125,7 @@ font-family:sans-serif;
                     <div class="card-body">
                            
                              
-						          <input type = "hidden" name="id" value="<%=rs.getString("id")%>"/>
+						          <input type = "hidden" name="id" value="<%=Integer.parseInt(rs.getString("id"))%>"/>
                            
                             <div class="form-group mt-2">
                               <label class="mb-0"><b>Name</b></label>
@@ -142,17 +142,6 @@ font-family:sans-serif;
                             </div>
                              
                            
-                            <div class="form-group mt-2">
-                                <label class="mb-0"><b>Select Stage</b></label>
-                                <select name="stage" class="form-control" required  value="<%=rs.getString("stage")%>">
-                                    <option value="Initial">Initial</option>
-                                    <option value="Ready to Provision">Ready to Provision</option>
-                                    <option value="Provisioned">Provisioned</option>
-                                    <option value="Active">Active</option>
-                                    <option value="Suspended">Suspended</option>
-                                    <option value="Deactivate">Deactivate</option>
-                                </select>
-                            </div>
                             <div class="form-group mt-2">
                               <label class="mb-0"><b>Password</b></label>
                               <input type="text" class="form-control" name="password"  required value="<%=rs.getString("password")%>">
@@ -187,23 +176,20 @@ String b = request.getParameter("name");
 String c = request.getParameter("telenum");
 String d = request.getParameter("email");
 
-
-String e = request.getParameter("stage");
-String f = request.getParameter("password");
+String e = request.getParameter("password");
 
 
-if(a!=null && b!=null && c!=null  && d!=null && e!=null &&f!=null )
+if(a!=null && b!=null && c!=null  && d!=null  && e!=null )
 {
 	
-	String query2 = "update USERLOGIN set NAME=?, TELENUM=?,EMAIL=?, STAGE=?, PASSWORD=? where ID=? ";
+	String query2 = "update USERLOGIN set NAME=?, TELENUM=? ,EMAIL=?, PASSWORD=? where ID=? ";
 	ps = con.prepareStatement(query2);
 	
 	ps.setString(1, b.toUpperCase());
 	ps.setString(2, c);
 	ps.setString(3, d);
 	ps.setString(4, e);
-	ps.setString(5, f);
-	ps.setString(6, a);
+	ps.setString(5, a);
 	
 	
 	

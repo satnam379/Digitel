@@ -93,7 +93,7 @@ ResultSet Rs;
 
 Class.forName("oracle.jdbc.driver.OracleDriver");
 con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521/xe", "satnam", "test");
-String Uname = (String)request.getAttribute("uname");
+String Uname = (String)session.getAttribute("uname");
 String Username = (String)request.getAttribute("theUserName");
 
 %>
@@ -119,7 +119,7 @@ String Username = (String)request.getAttribute("theUserName");
                                  
                                // int uname = session.getAttribute("theUserName");
                               
-                                String data = "SELECT * FROM LASTLOGIN WHERE USERNAME like'%"+Username+"%'";
+                                String data = "SELECT * FROM LASTLOGIN WHERE USERNAME like'%"+Uname+"%'";
                                 rs=stmt.executeQuery(data);
                                 
                                 %>
@@ -198,7 +198,7 @@ String Username = (String)request.getAttribute("theUserName");
 						    	  query = "SELECT * FROM USERREQUESTSS WHERE ID like '%"+search+"%' OR NAME like '%"+search.toUpperCase()+"%' OR NAME like '%"+search+"%' OR TELENUM like'%"+search+"%' ";
 						    	 }
 						    	 else{
-						    	   query="SELECT ID, NAME, TELENUM, STAGE FROM USERREQUESTSS WHERE OWNER like'%"+Username+"%'";
+						    	   query="SELECT ID, NAME, TELENUM, STAGE FROM USERREQUESTSS WHERE OWNER like'%"+Uname+"%'";
 						    	 }
 						    	 rss=stmts.executeQuery(query);
 						    	 while(rss.next())
@@ -238,7 +238,7 @@ String Username = (String)request.getAttribute("theUserName");
                                     <button class="btn btn-success float-right" onclick="return Validate()" style="background-color: #fb2525;">
                                        <p>Logout</p>
                                        
-             <div>
+             
             <%
             
            
@@ -246,7 +246,7 @@ String Username = (String)request.getAttribute("theUserName");
     		PreparedStatement ps1;
     		String sql2;
     		// String Usernames = (String)request.getAttribute("theUserName");
-    		String datas = "Select * from LASTLOGIN where USERNAME='"+Username+"'";
+    		String datas = "Select * from LASTLOGIN where USERNAME='"+Uname+"'";
     		
     		try {
     			ps = con.prepareStatement(datas);
@@ -260,7 +260,7 @@ String Username = (String)request.getAttribute("theUserName");
     					sql2 = "INSERT INTO LASTLOGIN (USERNAME, LASTLOGINDATE) VALUES(?, SYSTIMESTAMP) ";
     				}
     			 ps1 = con.prepareStatement(sql2);
-    				ps1.setString(1, Username);
+    				ps1.setString(1, Uname);
     				int r1 = ps1.executeUpdate();
     		} catch (SQLException e1) {
     			// TODO Auto-generated catch block
@@ -268,7 +268,7 @@ String Username = (String)request.getAttribute("theUserName");
     		}
             
             %>
-            </div>
+           
                                        
                                   
                                        

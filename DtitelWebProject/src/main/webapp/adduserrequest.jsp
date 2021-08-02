@@ -84,7 +84,7 @@ font-family:sans-serif;
                 <form name ="myForm" method="post" action="RequestUsers" onsubmit="return Validate()">
                 
                 <div class="card">
-                    <div class="card-header text-white h3" style="background-color: #fb2525;;"><b>Add user</b></div>
+                    <div class="card-header text-white h3" style="background-color: #fb2525;;"><b>Add New Mobile Number</b></div>
                     <div class="card-body">
                     <% 
                         stmt = con.createStatement();
