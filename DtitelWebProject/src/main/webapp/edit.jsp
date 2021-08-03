@@ -35,7 +35,6 @@ con=DriverManager.getConnection(host, "satnam", "test");
 	 var nam = document.myForm.name.value;
 	 var tele = document.myForm.telenum.value;
 	 var mail = document.myForm.email.value;
-	 var step = document.myForm.stage.value;
 	 var pwd = document.myForm.password.value;
 	 var regexemail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 	 var regextele = /^\d{10}$/;

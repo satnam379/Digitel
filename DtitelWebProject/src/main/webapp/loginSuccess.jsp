@@ -62,7 +62,7 @@ font-size:25px;
  <div class ="center" >
  <a href="./Dashboard.jsp">
         <button class="btn btn-success float-right" style="background-color: #fb2525;">
-            <p>Dashboard</p>
+            <p>View Users Detail</p>
         </button>
  </a>
  </div>

@@ -108,7 +108,7 @@ font-family:sans-serif;
                              
                            
                             <div class="form-group mt-2">
-                                <label class="mb-0"><b>Select Stage</b></label>
+                                <label class="mb-0"><b>Select Stage For Request</b></label>
                                 <select name="requestedstage" class="form-control" required>
                                     <option value="Initial">Initial</option>
                                     <option value="Ready to Provision">Ready to Provision</option>
